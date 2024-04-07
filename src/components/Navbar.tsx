@@ -14,7 +14,7 @@ function Navbar() {
 
     const signInOnClick = async () => {
         const response = await signInWithPopup(auth, Providers.google);
-        if (response.user ){
+        if (response.user){
             location.reload();
         }
     }
@@ -69,13 +69,13 @@ function Navbar() {
                             </Button>
                             :
                             <Button className="p-3 m-5 justify-center">
-                            <div>
-                                <Link to="/" onClick={ () => { signOutOnClick() }} className="flex place-items-center mt-4 
-                                lg:inline-block lg:mt-0 hover:text-white">
-                                Sign Out
-                                </Link>
-                            </div>
-                        </Button>
+                                <div>
+                                    <Link to="/" onClick={ () => { signOutOnClick() }} className="flex place-items-center mt-4 
+                                    lg:inline-block lg:mt-0 hover:text-white">
+                                    Sign Out
+                                    </Link>
+                                </div>
+                            </Button>
 
                         }
                     </div>

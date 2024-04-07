@@ -7,7 +7,8 @@ import { useDispatch, useStore } from "react-redux"
 import { chooseMake, chooseModel, chooseYear, chooseMileage, choosePrice, chooseBodyStyle } from "../redux/slices/RootSlice" 
 
 interface ContactFormProps {
-  id?: string[]
+  id?: string[];
+  onClose: () => void;
 }
 
 const ContactForm = ( props: ContactFormProps ) => {
@@ -16,7 +17,9 @@ const ContactForm = ( props: ContactFormProps ) => {
   const store = useStore();
 
   const onSubmit = (data: any, event: any) => {
-    console.log(`ID: ${typeof props.id}`);
+    console.log(`ID: ${props.id}`)
+    console.log(props.id)
+    console.log(data)
     if (props.id && props.id.length > 0) {
       server_calls.update(props.id[0], data)
       console.log(`Updated: ${data.first } ${ props.id }`)
@@ -32,6 +35,9 @@ const ContactForm = ( props: ContactFormProps ) => {
 
       server_calls.create(store.getState())
       setTimeout( () => {window.location.reload()}, 1000);
+      event.target.reset()
+
+      props.onClose()
     }
   }
 
